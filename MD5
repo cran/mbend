@@ -1,0 +1,12 @@
+73c3693a7f2d98ab88c743364e53a61a *DESCRIPTION
+532635c9755e22882817795ec7119b98 *NAMESPACE
+e63932715d6f28f7bef647c91b9646b7 *R/bend.R
+adb5f3ac3f28baf7233dffc86ace5178 *R/mbend.R
+6e6071c6d54f9ef2f03b4ab42e142486 *README.md
+911b9b0529788cde5cfd5b8dccbf24ee *build/vignette.rds
+a516d004a9f5a7ca7e112c78a4f12e7e *inst/doc/demo.R
+156d34616fa3d30aafa6f51205b501ed *inst/doc/demo.Rmd
+579752f4958952bf723ced32663894d0 *inst/doc/demo.html
+6aa69b64208dbe24b39d7ceb1393863e *man/bend.Rd
+af0064e4258eea64727f6b79d4e7c6e9 *man/mbend-package.Rd
+156d34616fa3d30aafa6f51205b501ed *vignettes/demo.Rmd
