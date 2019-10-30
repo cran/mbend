@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3515891.svg)](https://doi.org/10.5281/zenodo.3515891)
+
 # mbend: An R package for bending non-positive-definite matrices to positive-definite
 
 Mohammad Ali Nilforooshan
@@ -46,7 +48,7 @@ bend(V)
 
 The above command is equivalent to `bend(inmat=V)`, where `inmat` is the argument that takes the matrix to be bended, or the following command:
 
-```r # eval=FALSE
+```r
 bend(V, max.iter=10000, small.positive=0.0001, method="hj")
 ```
 
