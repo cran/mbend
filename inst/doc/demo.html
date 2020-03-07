@@ -209,7 +209,7 @@ hr {
 
 <p><em>Bending non-positive-definite (symmetric) matrices to positive-definite, using weighted and unweighted methods</em></p>
 
-<p>The <code>mbend</code> package is used for bending a non-positive-definite matrix to a positive-definite (PD) matrix. For a matrix to be invertible, it has to be PD. The methods of Jorjani et al. (2003) and Schaeffer (2010) are used in this package. The unweighted method of Schaeffer (2010) is also extended to weighted bending, with the possibility of choosing between unweighted and weighted bending.</p>
+<p>The <code>mbend</code> package is used for bending a non-positive-definite matrix to a positive-definite (PD) matrix. For a matrix to be invertible, it has to be PD. The methods of Jorjani et al. (2003) and Schaeffer (2014) are used in this package. The unweighted method of Schaeffer (2014) is also extended to weighted bending, with the possibility of choosing between unweighted and weighted bending.</p>
 
 <h2>Application</h2>
 
@@ -248,6 +248,8 @@ hr {
 #&gt;   23.6468969357859
 #&gt;   9.99999999917733e-05
 #&gt;   9.99999999516409e-05
+#&gt; Range of deviation = -5.9296122425301 6.49734335968796
+#&gt; Upper.tri average deviation = 0.72347050463841
 #&gt; Minimum absolute deviation = 0.528781551653452 [1,3]
 #&gt; Maximum absolute deviation = 6.49734335968796 [4,4]
 #&gt; Upper.tri average absolute deviation = 3.37269167108133
@@ -298,6 +300,8 @@ hr {
 #&gt;   12.299126553176
 #&gt;   7.66787308386723e-05
 #&gt;   1.21038807540936e-06
+#&gt; Range of deviation = -20.0007908829187 5.84554999273102
+#&gt; Upper.tri average deviation = -1.71605829547344
 #&gt; Minimum absolute deviation = 0.161540442682281 [1,1]
 #&gt; Maximum absolute deviation = 20.0007908829187 [2,4]
 #&gt; Upper.tri average absolute deviation = 3.62526845370067
@@ -337,13 +341,15 @@ bend(V, W2, reciprocal=TRUE)
 #&gt;   11.4162918091265
 #&gt;   7.64681848664974e-05
 #&gt;   1.17480224900039e-07
+#&gt; Range of deviation = -20.4157775153382 6.15037904095363
+#&gt; Upper.tri average deviation = -1.73283635615101
 #&gt; Minimum absolute deviation = 0 [1,1]
 #&gt; Maximum absolute deviation = 20.4157775153382 [4,2]
 #&gt; Upper.tri average absolute deviation = 3.70526947045777
 #&gt; Upper.tri correlation = 0.959799073876244
 #&gt; 15 Upper.tri elements; for the 12 elements that are not set to constant:
 #&gt;   Upper.tri weighted average absolute deviation = 0.770543658780136
-#&gt;   Upper.tri weighted correlation = 0.99512093714091
+#&gt;   Upper.tri weighted correlation = 0.995120937140909
 #&gt;           [,1]      [,2]      [,3]      [,4]      [,5]
 #&gt; [1,] 100.00000  95.00000  83.70895  43.70489  39.12852
 #&gt; [2,]  95.00000 100.00000  93.89940  59.58422  46.15038
@@ -352,7 +358,9 @@ bend(V, W2, reciprocal=TRUE)
 #&gt; [5,]  39.12852  46.15038  72.91450  94.21299 100.18322
 </code></pre>
 
-<p>To bend <code>V</code> using the method of Schaeffer (2010):</p>
+<p>As it can be seen in the report, 3 of the 15 upper triangle elements are set to constant.</p>
+
+<p>To bend <code>V</code> using the method of Schaeffer (2014):</p>
 
 <pre><code class="r">bend(inmat=V, method=&quot;lrs&quot;)
 #&gt; Unweighted bending
@@ -364,7 +372,6 @@ bend(V, W2, reciprocal=TRUE)
 #&gt;   23.6468969357859
 #&gt;   -3.12289346339295
 #&gt;   -18.5234995535981
-#&gt; Source: Schaeffer, L. R. (2010). http://animalbiosciences.uoguelph.ca/~lrs/piksLRS/PDforce.pdf
 #&gt; Convergence met after 1 iterations.
 #&gt; Final eigenvalues:
 #&gt;   399.475996527605
@@ -372,6 +379,8 @@ bend(V, W2, reciprocal=TRUE)
 #&gt;   23.6468969357859
 #&gt;   0.203583282231235
 #&gt;   0.0774047769998617
+#&gt; Range of deviation = -5.93704734709341 6.54176982926614
+#&gt; Upper.tri average deviation = 0.732955037925687
 #&gt; Minimum absolute deviation = 0.563235099819792 [3,1]
 #&gt; Maximum absolute deviation = 6.54176982926614 [4,4]
 #&gt; Upper.tri average absolute deviation = 3.40870716448891
@@ -384,7 +393,7 @@ bend(V, W2, reciprocal=TRUE)
 #&gt; [5,]  37.06769  44.56754  79.43676  90.82704 103.18978
 </code></pre>
 
-<p>The method of Schaeffer (2010) does not require the argument <code>small.positive</code>, and this argument is ignored. This method is originally an unweighted bending method. However, in this package, it is extended to accommodate weighted bending (i.e., a combination of Schaeffer (2010) and Jorjani et al. (2003) methods). Weighted bending of <code>V</code> with reciprocals of <code>W</code> using the method of Schaeffer (2010):</p>
+<p>The method of Schaeffer (2014) does not require the argument <code>small.positive</code>, and this argument is ignored. This method is originally an unweighted bending method. However, in this package, it is extended to accommodate weighted bending (i.e., a combination of Schaeffer (2014) and Jorjani et al. (2003) methods). Weighted bending of <code>V</code> with reciprocals of <code>W</code> using the method of Schaeffer (2014):</p>
 
 <pre><code class="r">bend(V, W, reciprocal=TRUE, method=&quot;lrs&quot;)
 #&gt; Weighted bending
@@ -397,7 +406,6 @@ bend(V, W2, reciprocal=TRUE)
 #&gt;   23.6468969357859
 #&gt;   -3.12289346339295
 #&gt;   -18.5234995535981
-#&gt; Source: Schaeffer, L. R. (2010). http://animalbiosciences.uoguelph.ca/~lrs/piksLRS/PDforce.pdf
 #&gt; Convergence met after 787 iterations.
 #&gt; Final eigenvalues:
 #&gt;   387.636539857614
@@ -405,6 +413,8 @@ bend(V, W2, reciprocal=TRUE)
 #&gt;   12.2826080278304
 #&gt;   0.0324216138054008
 #&gt;   0.000443532672897638
+#&gt; Range of deviation = -19.9923416420825 5.8637972845693
+#&gt; Upper.tri average deviation = -1.71580553899355
 #&gt; Minimum absolute deviation = 0.161942434558412 [1,1]
 #&gt; Maximum absolute deviation = 19.9923416420825 [4,2]
 #&gt; Upper.tri average absolute deviation = 3.63380255067224
@@ -429,6 +439,7 @@ bend(V2, W, reciprocal=TRUE)
 #&gt; max.iter = 10000
 #&gt; small.positive = 1e-04
 #&gt; method = hj
+#&gt; Found a correlation matrix.
 #&gt; Initial eigenvalues:
 #&gt;   3.99475996527606
 #&gt;   0.985234995535981
@@ -442,13 +453,16 @@ bend(V2, W, reciprocal=TRUE)
 #&gt;   0.115656626525816
 #&gt;   7.74077131621184e-05
 #&gt;   2.03173477736353e-06
-#&gt; Minimum absolute deviation = 0 [1,1]
+#&gt; Statistics excluding diagonal elements:
+#&gt; Range of deviation = -0.199535820290176 0.0630373480880824
+#&gt; Upper.tri average deviation = -0.0283824839213205
+#&gt; Minimum absolute deviation = 0.00524637203616529 [1,1]
 #&gt; Maximum absolute deviation = 0.199535820290176 [2,4]
-#&gt; Upper.tri average absolute deviation = 0.0369236539460671
-#&gt; Upper.tri correlation = 0.960324246581089
-#&gt; 15 Upper.tri elements; for the 10 elements that are not set to constant:
+#&gt; Upper.tri average absolute deviation = 0.0553854809191007
+#&gt; Upper.tri correlation = 0.946312783301257
+#&gt; 10 Upper.tri elements; for the 10 elements that are not set to constant:
 #&gt;   Upper.tri weighted average absolute deviation = 0.0141695879562372
-#&gt;   Upper.tri weighted correlation = 0.994254131862482
+#&gt;   Upper.tri weighted correlation = 0.994254131862483
 #&gt;           [,1]      [,2]      [,3]      [,4]      [,5]
 #&gt; [1,] 1.0000000 0.9447536 0.8342673 0.4377103 0.3912583
 #&gt; [2,] 0.9447536 1.0000000 0.9385087 0.6004642 0.4630373
@@ -457,20 +471,21 @@ bend(V2, W, reciprocal=TRUE)
 #&gt; [5,] 0.3912583 0.4630373 0.7248761 0.9418815 1.0000000
 </code></pre>
 
-<p>Because the argument <code>method</code> is not provided, the default parameter <code>&quot;hj&quot;</code> is used. To do the same using the method of Schaeffer (2010):</p>
+<p>As indicated above, diagonal elements are not used in the reporting statistics. This happens to correlation matrices.
+Because the argument <code>method</code> is not provided, the default parameter <code>&quot;hj&quot;</code> is used. To do the same using the method of Schaeffer (2014):</p>
 
 <pre><code class="r">bend(V2, W, reciprocal=TRUE, method=&quot;lrs&quot;)
 #&gt; Weighted bending
 #&gt; reciprocal = TRUE
 #&gt; max.iter = 10000
 #&gt; method = lrs
+#&gt; Found a correlation matrix.
 #&gt; Initial eigenvalues:
 #&gt;   3.99475996527606
 #&gt;   0.985234995535981
 #&gt;   0.23646896935786
 #&gt;   -0.0312289346339294
 #&gt;   -0.185234995535981
-#&gt; Source: Schaeffer, L. R. (2010). http://animalbiosciences.uoguelph.ca/~lrs/piksLRS/PDforce.pdf
 #&gt; Convergence met after 700 iterations.
 #&gt; Final eigenvalues:
 #&gt;   3.86881998612449
@@ -478,11 +493,14 @@ bend(V2, W, reciprocal=TRUE)
 #&gt;   0.115577591310937
 #&gt;   0.000261768738811671
 #&gt;   2.85695033471629e-06
-#&gt; Minimum absolute deviation = 0 [1,1]
+#&gt; Statistics excluding diagonal elements:
+#&gt; Range of deviation = -0.19940766680859 0.0631892792397414
+#&gt; Upper.tri average deviation = -0.0283856208324125
+#&gt; Minimum absolute deviation = 0.00526174379216604 [1,1]
 #&gt; Maximum absolute deviation = 0.19940766680859 [4,2]
-#&gt; Upper.tri average absolute deviation = 0.0369849995118305
-#&gt; Upper.tri correlation = 0.960267721559798
-#&gt; 15 Upper.tri elements; for the 10 elements that are not set to constant:
+#&gt; Upper.tri average absolute deviation = 0.0554774992677458
+#&gt; Upper.tri correlation = 0.946234975233815
+#&gt; 10 Upper.tri elements; for the 10 elements that are not set to constant:
 #&gt;   Upper.tri weighted average absolute deviation = 0.0142076326019521
 #&gt;   Upper.tri weighted correlation = 0.994232700482272
 #&gt;           [,1]      [,2]      [,3]      [,4]      [,5]
@@ -493,19 +511,19 @@ bend(V2, W, reciprocal=TRUE)
 #&gt; [5,] 0.3912447 0.4631893 0.7245638 0.9418734 1.0000000
 </code></pre>
 
-<p>Bending the same correlation matrix using the unweighted Schaeffer (2010):</p>
+<p>Bending the same correlation matrix using the unweighted Schaeffer (2014):</p>
 
 <pre><code class="r">bend(V2, method=&quot;lrs&quot;)
 #&gt; Unweighted bending
 #&gt; max.iter = 10000
 #&gt; method = lrs
+#&gt; Found a correlation matrix.
 #&gt; Initial eigenvalues:
 #&gt;   3.99475996527606
 #&gt;   0.985234995535981
 #&gt;   0.23646896935786
 #&gt;   -0.0312289346339294
 #&gt;   -0.185234995535981
-#&gt; Source: Schaeffer, L. R. (2010). http://animalbiosciences.uoguelph.ca/~lrs/piksLRS/PDforce.pdf
 #&gt; Convergence met after 39 iterations.
 #&gt; Final eigenvalues:
 #&gt;   3.90836387072011
@@ -513,10 +531,13 @@ bend(V2, W, reciprocal=TRUE)
 #&gt;   0.165663862030552
 #&gt;   0.0071038703941073
 #&gt;   0.000509397519274219
-#&gt; Minimum absolute deviation = 0 [1,1]
+#&gt; Statistics excluding diagonal elements:
+#&gt; Range of deviation = -0.0788188733585764 0.0716891552890742
+#&gt; Upper.tri average deviation = -0.0203850283712788
+#&gt; Minimum absolute deviation = 0.0205864131251348 [1,1]
 #&gt; Maximum absolute deviation = 0.0788188733585764 [4,2]
-#&gt; Upper.tri average absolute deviation = 0.0327071269778402
-#&gt; Upper.tri correlation = 0.984721670842451
+#&gt; Upper.tri average absolute deviation = 0.0490606904667602
+#&gt; Upper.tri correlation = 0.985404338381732
 #&gt;           [,1]      [,2]      [,3]      [,4]      [,5]
 #&gt; [1,] 1.0000000 0.8935779 0.7794136 0.4716892 0.3599505
 #&gt; [2,] 0.8935779 1.0000000 0.9128285 0.7211811 0.4716892
@@ -531,7 +552,7 @@ bend(V2, W, reciprocal=TRUE)
 
 <p>Jorjani, H., Klie. L., &amp; Emanuelson, U. (2000). A simple method for weighted bending of genetic (co)variance matrices. <em>J. Dairy Sci.</em> 86(2): 677&ndash;679. <a href="https://doi.org/10.3168/jds.S0022-0302(03)73646-7">https://doi.org/10.3168/jds.S0022-0302(03)73646-7</a></p>
 
-<p>Schaeffer, L. R. (2010). Modification of negative eigenvalues to create positive definite matrices and approximation of standard errors of correlation estimates. Available at: <a href="http://animalbiosciences.uoguelph.ca/%7Elrs/piksLRS/PDforce.pdf">http://animalbiosciences.uoguelph.ca/~lrs/piksLRS/PDforce.pdf</a></p>
+<p>Schaeffer, L. R. (2014). Making covariance matrices positive definite. Available at: <a href="http://animalbiosciences.uoguelph.ca/%7Elrs/ELARES/PDforce.pdf">http://animalbiosciences.uoguelph.ca/~lrs/ELARES/PDforce.pdf</a></p>
 
 </body>
 
